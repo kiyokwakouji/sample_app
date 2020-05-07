@@ -6,8 +6,8 @@ class User < ApplicationRecord
  validates :email, presence: true, length: { maximum: 255 },
             format: { with: VALID_EMAIL_REGEX },
             uniqueness: { case_sensitive: false }
- has_secure_password
- validates :password, presence: true, length: { minimum: 6 }
+ has_secure_password                                        #↓passが空のままでも更新できるようにする↓
+ validates :password, presence: true, length: { minimum: 6 },allow_nil: true
   
  # 渡された文字列のハッシュ値を返す
  def User.digest(string)
@@ -24,7 +24,7 @@ class User < ApplicationRecord
  # 永続セッションのためにユーザーをデータベースに記憶する
  def remember
   self.remember_token = User.new_token
-  self.update_attribute(:remember_digest, 
+  update_attribute(:remember_digest, 
         User.digest(remember_token))
  end
  
