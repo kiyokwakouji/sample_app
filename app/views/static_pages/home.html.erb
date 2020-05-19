@@ -4,6 +4,9 @@
         <section class="user_info">
             <%= render 'shared/user_info' %>
         </section>
+        <section class="stats">
+            <%= render 'shared/stats' %>
+        </section>
         <section class="micropost_form">
             <%= render 'shared/micropost_form' %>
         </section>
@@ -18,9 +21,9 @@
     <h1>Welcome to the Sample App</h1>
 
     <h2>
-        This is the home page for the
+        これは
         <a href="https://railstutorial.jp/">Ruby on Rails Tutorial</a>
-        sample application.
+        のホームページです。
     </h2>
 
     <%= link_to "今すぐ登録!", signup_path, class: "btn btn-lg btn-primary" %>
